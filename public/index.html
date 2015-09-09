@@ -1,0 +1,30 @@
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+   <h1>Drawings</h1>
+   <p>make a new <a href="/new.html">drawing</a>!</p>
+   <ul></ul>
+</body>
+</html>
+<script>
+$( document ).ready(function(e) {
+ 
+//  e.preventDefault();
+
+    $.ajax({
+     contentType: "application/json; charset=utf-8", 
+     dataType: "json",
+      method: "GET",
+      url: "/drawings"
+    }).done(function( drawings ) {
+        function drawing(draw){
+            $('ul').append("<li>"+"<a href=/drawing.html?id="+draw._id+">"+draw.name+"</a>"+"</li>");
+        }
+         drawings.forEach(drawing)
+      });
+
+ });
+</script>
+

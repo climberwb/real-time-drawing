@@ -1,0 +1,30 @@
+</html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+<form action="/drawing" method="post">
+ name: <input type="text" name="name" value=""><br><br/>
+  <!--<input type="submit" value="Submit">-->
+  <button>Save Drawing</button>
+</form>
+</body>
+</html>
+<script>
+$( document ).ready(function() {
+ $('button').on('click',function(e){
+  e.preventDefault();
+
+    $.ajax({
+     contentType: "application/json; charset=utf-8", 
+     dataType: "json",
+      method: "POST",
+      url: "/drawing",
+      data: JSON.stringify({ name: document.getElementsByTagName('input')[0].value })
+    }).done(function( msg ) {
+        alert( "Drawing Saved!" );
+        window.location.href='/';
+      });
+ });
+ });
+</script>
