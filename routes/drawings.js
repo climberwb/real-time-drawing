@@ -16,9 +16,17 @@ router.get('/drawings', function(req, res) {
 });
 
 
+// router.get('/items', function(req, res) {
+//     Item.list(function(items) {
+//         res.status(201).json(items);
+//     }, function(err) {
+//         console.log(err);
+//         res.status(400).json(err);
+//     });
+// });
+
 router.get('/drawings/:id', function(req, res) {
     Drawing.findOne(req.params.id,function(drawing) {
-        res.
         res.status(201).json(drawing);
     }, function(err) {
         console.log(err);
@@ -34,6 +42,13 @@ router.post('/drawing', function(req, res) {
     });
 });
 
-
+// router.post('/drawings', function(req, res) {
+//     Drawing.save(req.body.name, function(drawing) {
+//         res.status(201).json(drawing);
+//     }, function(err) {
+//         console.log(err);
+//         res.status(400).json(err);
+//     });
+// });
 
 module.exports = router;

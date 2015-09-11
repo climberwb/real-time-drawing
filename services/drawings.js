@@ -36,7 +36,7 @@ exports.list = function(callback, errback) {
 
 exports.update = function(id,point,callback,errback){
     console.log('inside services update'+' '+point+' '+id);
-    Drawing.findOneAndUpdate({_id:id},{$push: {points: point}},{safe: true, upsert: true},function(err,drawing){
+    Drawing.findOneAndUpdate({_id:id},{$addToSet: {points: point}},{safe: true, upsert: true},function(err,drawing){
       //console.log(err);
         if(err){
              console.log('inside services update fail');
